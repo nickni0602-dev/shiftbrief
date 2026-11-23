@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f7" />
+    <title>ShiftBrief | Shift handoff</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">↳</span> ShiftBrief</div>
+      <span class="topbar-label">Shift handoff</span>
+    </header>
+    <main class="workspace">
+      <div class="page-header">
+        <h1>Prepare a shift handoff</h1>
+        <button class="quiet" id="load-example" type="button"><i data-lucide="file-text"></i> Load example</button>
+      </div>
+      <div class="work-grid">
+        <section class="notes-pane" aria-labelledby="notes-heading">
+          <h2 id="notes-heading">Shift notes</h2>
+          <textarea id="notes" aria-labelledby="notes-heading" maxlength="6000" placeholder="Paste or type the notes from your outgoing shift…"></textarea>
+          <div class="editor-footer"><span id="count">0 / 6,000</span></div>
+          <fieldset>
+            <legend>AI processing</legend>
+            <label class="processing-option"><input type="radio" name="mode" value="local" checked /> This device only</label>
+            <label class="processing-option"><input type="radio" name="mode" value="hybrid" /> This device with cloud fallback</label>
+            <p id="privacy" class="privacy"><i data-lucide="shield-check"></i> Notes stay on this device. Chrome may need to download its language model.</p>
+          </fieldset>
+          <div class="actions">
+            <button id="generate" class="primary" type="button"><i data-lucide="sparkles"></i> Generate handoff</button>
+            <button id="enable-device" class="quiet" type="button">Prepare device model</button>
+          </div>
+          <p id="status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="result-pane" aria-labelledby="results-heading">
+          <div class="result-header">
+            <h2 id="results-heading">Handoff brief</h2>
+            <button title="Copy brief" aria-label="Copy brief" id="copy" class="quiet icon-button" type="button" disabled><i data-lucide="copy"></i></button>
+          </div>
+          <div id="output" aria-live="polite">
+            <div class="empty"><i data-lucide="clipboard-list"></i><p>Your handoff brief will appear here.</p></div>
+          </div>
+          <div id="source" class="source" hidden></div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
